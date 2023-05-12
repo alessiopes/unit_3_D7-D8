@@ -1,6 +1,8 @@
 # unit_3_D7-D8
 Netflix Clone using Bootstrap and Web Design Principles
 
+PREVIEW => https://alessiopes.github.io/unit_3_D7-D8/
+
 This project aims to create a clone of the popular streaming service Netflix using Bootstrap and web design principles. The project will consist of creating a responsive and visually appealing user interface that closely mimics the look and feel of the original Netflix website.
 
 To achieve this, the project will be divided into several phases, including:
