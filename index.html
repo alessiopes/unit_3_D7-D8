@@ -1,0 +1,708 @@
+<!-- Ricrea un clone di Netflix, il piu fedelmente possibile -->
+
+<!-- Utilizza Bootstrap -->
+
+<!-- Deve essere responsive -->
+
+<!-- Con mouse hover, le card di devono ingrandire -->
+
+<!-- Con JavaScript, fare apparire le righe solo quando lo scroll arriva alla loro altezza -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Font import -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico"
+    />
+
+    <title>Netflix Clone</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/imgs/Netflix_Logo_RGB.png" alt="Netflix Logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="nav-item-3"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                TV Shows
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="nav-item-3">
+                <li>
+                  <a class="dropdown-item" href="#">Action & Adventure</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Comedies</a></li>
+                <li><a class="dropdown-item" href="#">Dramas</a></li>
+                <li><a class="dropdown-item" href="#">Documentaries</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="moviesDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Movies
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="moviesDropdown">
+                <li>
+                  <a class="dropdown-item" href="#">Action & Adventure</a>
+                </li>
+                <li><a class="dropdown-item" href="#">Animation</a></li>
+                <li><a class="dropdown-item" href="#">Comedy</a></li>
+                <li><a class="dropdown-item" href="#">Crime</a></li>
+                <li><a class="dropdown-item" href="#">Documentary</a></li>
+                <li><a class="dropdown-item" href="#">Drama</a></li>
+                <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                <li><a class="dropdown-item" href="#">Horror</a></li>
+                <li><a class="dropdown-item" href="#">International</a></li>
+                <li><a class="dropdown-item" href="#">Kids & Family</a></li>
+                <li><a class="dropdown-item" href="#">Romance</a></li>
+                <li><a class="dropdown-item" href="#">Sci-Fi & Fantasy</a></li>
+                <li><a class="dropdown-item" href="#">Thriller</a></li>
+                <div class="dropdown-divider"></div>
+                <li><a class="dropdown-item" href="#">See all Movies</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Recently Added</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My List</a>
+            </li>
+          </ul>
+          <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" placeholder="Cerca" class="search-input" />
+          </div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">KIDS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><i class="fas fa-bell"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="profile-dropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="assets/imgs/cesar-rincon-XHVpWcr5grQ-unsplash.jpg"
+                  alt="Profile Image"
+                  class="rounded-circle"
+                  style="width: 32px"
+                />
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="profile-dropdown"
+              >
+                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Sign Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Pop-up -->
+    <div id="popup">
+      <div id="popup-message">
+        <h2>Welcome to our Netflix clone!</h2>
+        <p>
+          I've got a fun surprise for you. Try entering this code to see what
+          happens!
+        </p>
+        <p>↑ ↑ ↓ ↓ ← → ← → b a</p>
+        <button id="popup-close">Close</button>
+      </div>
+    </div>
+
+    <!-- Easter Egg -->
+    <div id="easter-egg">
+      <img
+        src="https://media.giphy.com/media/YQitE4YNQNahy/giphy.gif"
+        alt="Easter Egg"
+      />
+    </div>
+
+    <!-- Header -->
+    <section id="section1">
+      <div class="header container mt-4">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-2">
+            <h2>TV Shows</h2>
+          </div>
+          <div class="col-md-2">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="genresDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Genres
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="genresDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Comedy</a></li>
+                <li><a class="dropdown-item" href="#">Drama</a></li>
+                <li><a class="dropdown-item" href="#">Horror</a></li>
+                <li><a class="dropdown-item" href="#">Thriller</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row-grid-toggle col-md-2 offset-md-6">
+            <button
+              id="row-button"
+              class="btn btn-primary active"
+              onclick="toggleView('row')"
+            >
+              <i class="fa-solid fa-list"></i>
+            </button>
+            <button
+              id="grid-button"
+              class="btn btn-primary"
+              onclick="toggleView('grid')"
+            >
+              <i class="fa-solid fa-border-all"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommended TV Shows -->
+    <section id="section2">
+      <div class="tv-shows">
+        <div class="container">
+          <h2 class="text-white font-weight-bold d-flex mb-4">
+            Recommended Now
+          </h2>
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+              <div class="tv-show">
+                <img src="assets/imgs/movies/1.png" alt="TV Show 1" />
+                <div class="overlay">
+                  <div class="tv-show-info">
+                    <h3>Unorthodox</h3>
+                    <p>
+                      A young Orthodox Jewish woman flees her community to seek
+                      independence.
+                    </p>
+                    <button class="btn">Watch Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="tv-show">
+                <img src="assets/imgs/movies/2.png" alt="TV Show 2" />
+                <div class="overlay">
+                  <div class="tv-show-info">
+                    <h3>After Life</h3>
+                    <p>
+                      After Life: a widower's journey to cope with loss, find
+                      purpose, and rediscover joy.
+                    </p>
+                    <button class="btn">Watch Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="tv-show">
+                <img src="assets/imgs/movies/3.png" alt="TV Show 3" />
+                <div class="overlay">
+                  <div class="tv-show-info">
+                    <h3>Vis a vis</h3>
+                    <p>
+                      A young woman must survive in a women's prison while
+                      seeking justice for her wrongful conviction.
+                    </p>
+                    <button class="btn">Watch Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+              <div class="tv-show">
+                <img src="assets/imgs/movies/4.png" alt="TV Show 4" />
+                <div class="overlay">
+                  <div class="tv-show-info">
+                    <h3>The Place</h3>
+                    <p>
+                      A mysterious man grants wishes to strangers in exchange
+                      for completing tasks.
+                    </p>
+                    <button class="btn">Watch Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscribe-container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+          <div class="row align-items-center">
+            <div class="col-lg-7 col-md-12 col-sm-12">
+              <h3 class="px-4">
+                Ready to watch? Enter your email to create or restart your
+                membership.
+              </h3>
+            </div>
+            <div class="col-lg-5 col-md-12 col-sm-12">
+              <div class="px-4 input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Email address"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-danger" type="button">
+                    Get Started
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carousel 1 -->
+    <section id="section3">
+      <div class="container text-center my-4 bold">
+        <h3 class="text-white font-weight-bold d-flex ms-4 mb-4">
+          Trending Now
+        </h3>
+        <div class="row mx-auto my-auto justify-content-center">
+          <div
+            id="recipeCarousel1"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/5.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/6.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/7.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/8.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/9.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/10.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev bg-transparent w-aut"
+              href="#recipeCarousel1"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+            </a>
+            <a
+              class="carousel-control-next bg-transparent w-aut"
+              href="#recipeCarousel1"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="container divider my-5" />
+
+    <!-- Carousel 2 -->
+    <section id="section4">
+      <div class="container text-center my-4 bold">
+        <h3 class="text-white font-weight-bold d-flex ms-4 mb-4">
+          Watch It Again
+        </h3>
+        <div class="row mx-auto my-auto justify-content-center">
+          <div
+            id="recipeCarousel2"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/16.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/11.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/12.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/13.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/14.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/15.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev bg-transparent w-aut"
+              href="#recipeCarousel2"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+            </a>
+            <a
+              class="carousel-control-next bg-transparent w-aut"
+              href="#recipeCarousel2"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="container divider my-5" />
+
+    <!-- Carousel 3 -->
+    <section id="section5">
+      <div class="container text-center my-4 bold">
+        <h3 class="text-white font-weight-bold d-flex ms-4 mb-4">
+          New Releases
+        </h3>
+        <div class="row mx-auto my-auto justify-content-center">
+          <div
+            id="recipeCarousel3"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/17.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/18.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/6.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/11.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/2.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-img">
+                      <img src="assets/imgs/movies/6.png" class="img-fluid" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev bg-transparent w-aut"
+              href="#recipeCarousel3"
+              role="button"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+            </a>
+            <a
+              class="carousel-control-next bg-transparent w-aut"
+              href="#recipeCarousel3"
+              role="button"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container my-5"></div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-5 py-3 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5 class="mb-3">Company</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5 class="mb-3">Help</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Support</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Terms of Use</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5 class="mb-3">Follow Us</h5>
+            <ul class="list-unstyled">
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h5 class="mb-3">Subscribe to Newsletter</h5>
+            <form>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control mb-3"
+                  id="netflix-input"
+                  placeholder="Enter your email address"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <hr class="bg-light" />
+            <p class="text-center mb-0">
+              &copy; <span class="year" id="current-year"></span> Netflix Clone.
+              All rights reserved.
+            </p>
+            <p class="text-center mb-0">Made with ❤️ by Alessio Pes</p>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!--* SCRIPT -->
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://kit.fontawesome.com/a732f7dbd1.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
